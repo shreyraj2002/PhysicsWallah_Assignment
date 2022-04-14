@@ -1,4 +1,4 @@
-package com.zakariya.pwassignment.modal
+package com.zakariya.pwassignment.model
 
 data class Teacher(
     val id: Int,
