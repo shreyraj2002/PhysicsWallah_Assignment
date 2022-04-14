@@ -9,7 +9,6 @@ import com.zakariya.pwassignment.ui.fragment.HomeFragment
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var toolbar: MaterialToolbar
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,10 +16,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        toolbar = MaterialToolbar(this)
-        setSupportActionBar(toolbar)
-
-        binding.toolBar.title = "Home"
+        setSupportActionBar(binding.toolBar)
+        supportActionBar?.title = "Home"
 
         supportFragmentManager
             .beginTransaction()

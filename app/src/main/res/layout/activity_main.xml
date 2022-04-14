@@ -16,18 +16,21 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:elevation="0dp">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolBar"
                 style="@style/Widget.MaterialComponents.Toolbar.Primary"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:background="@drawable/bg_toolbar"
+                android:elevation="1dp"
                 app:layout_scrollFlags="scroll|enterAlways|snap"
-                app:title="@string/app_name" />
-
+                app:title="@string/app_name"
+                app:titleCentered="true" />
         </com.google.android.material.appbar.AppBarLayout>
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <FrameLayout
