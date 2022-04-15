@@ -4,4 +4,6 @@
     <string name="view_more">View More</string>
     <string name="dot">•</string>
     <string name="teacher_profile_picture">Teacher profile picture</string>
+    <string name="no_internet">No Internet</string>
+    <string name="retry">Retry</string>
 </resources>

@@ -1,7 +1,6 @@
 package com.zakariya.pwassignment.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,8 +20,6 @@ class HomeFragment : Fragment(), HomeRecyclerAdapter.OnTeacherClickListener {
     private lateinit var viewModel: TeachersViewModel
     private lateinit var homeRecyclerAdapter: HomeRecyclerAdapter
 
-    val TAG = HomeFragment::class.simpleName
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,19 +37,21 @@ class HomeFragment : Fragment(), HomeRecyclerAdapter.OnTeacherClickListener {
         setupRecyclerAdapter()
 
         viewModel.teachersData.observe(viewLifecycleOwner) { response ->
-
             when (response) {
                 is Resource.Success -> {
                     hideProgressBar()
                     response.data?.let {
                         homeRecyclerAdapter.sendDataToAdapter(it)
                     }
+                    binding.txtNoInternet.visibility = View.GONE
                 }
                 is Resource.Error -> {
                     hideProgressBar()
                     response.message?.let { message ->
-                        Log.e(TAG, "Error: $message")
+                        Toast.makeText(requireContext(), "Error: $message", Toast.LENGTH_SHORT)
+                            .show()
                     }
+                    binding.txtNoInternet.visibility = View.VISIBLE
                 }
                 is Resource.Loading -> {
                     showProgressBar()

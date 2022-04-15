@@ -24,7 +24,8 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = "Home"
 
         val teachersRepository = TeachersRepository()
-        val viewModelProviderFactory = TeacherViewModelProviderFactory(teachersRepository)
+        val viewModelProviderFactory =
+            TeacherViewModelProviderFactory(application, teachersRepository)
         viewModel = ViewModelProvider(this, viewModelProviderFactory)[TeachersViewModel::class.java]
 
         supportFragmentManager
