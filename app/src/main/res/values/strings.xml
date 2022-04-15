@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PW Assignment</string>
+    <string name="qualification">Qualification</string>
+    <string name="view_more">View More</string>
+    <string name="dot">•</string>
+    <string name="teacher_profile_picture">Teacher profile picture</string>
 </resources>

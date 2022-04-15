@@ -1,12 +1,10 @@
 package com.zakariya.pwassignment.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zakariya.pwassignment.adapter.HomeRecyclerAdapter
 import com.zakariya.pwassignment.databinding.FragmentHomeBinding
@@ -31,5 +29,16 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel = (activity as MainActivity).viewModel
 
+        homeRecyclerAdapter = HomeRecyclerAdapter(requireContext())
+        setupRecyclerAdapter()
+
+        viewModel.teachersData.observe(viewLifecycleOwner) {
+            homeRecyclerAdapter.sendDataToAdapter(it)
+        }
+    }
+
+    private fun setupRecyclerAdapter() = binding.homeRecyclerView.apply {
+        adapter = homeRecyclerAdapter
+        layoutManager = LinearLayoutManager(requireContext())
     }
 }
