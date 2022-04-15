@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.zakariya.pwassignment.databinding.RecyclerHomeSingleItemBinding
 import com.zakariya.pwassignment.model.Teacher
 
-class HomeRecyclerAdapter(val context: Context) :
+class HomeRecyclerAdapter(private val context: Context, val listener: OnTeacherClickListener) :
     RecyclerView.Adapter<HomeRecyclerAdapter.HomeViewHolder>() {
 
     private var teachersList: List<Teacher> = arrayListOf()
@@ -29,6 +29,10 @@ class HomeRecyclerAdapter(val context: Context) :
         holder.binding.txtSubject.text = teacher.subjects.first()
         holder.binding.txtQualification.text = teacher.qualification.first()
         Glide.with(context).load(teacher.profileImage).into(holder.binding.imgTeacher)
+
+        holder.binding.btnViewMore.setOnClickListener {
+            listener.onClickListener(teacher)
+        }
     }
 
     override fun getItemCount(): Int = teachersList.size
@@ -39,5 +43,9 @@ class HomeRecyclerAdapter(val context: Context) :
     fun sendDataToAdapter(_teachersList: List<Teacher>) {
         this.teachersList = _teachersList
         notifyDataSetChanged()
+    }
+
+    interface OnTeacherClickListener {
+        fun onClickListener(data: Teacher)
     }
 }
