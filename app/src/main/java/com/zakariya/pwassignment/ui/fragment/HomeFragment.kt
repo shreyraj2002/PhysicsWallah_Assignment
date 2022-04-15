@@ -23,6 +23,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        binding.progressBar.visibility = View.VISIBLE
         return binding.root
     }
 
@@ -33,7 +34,9 @@ class HomeFragment : Fragment() {
         setupRecyclerAdapter()
 
         viewModel.teachersData.observe(viewLifecycleOwner) {
+            binding.progressBar.visibility = View.VISIBLE
             homeRecyclerAdapter.sendDataToAdapter(it)
+            binding.progressBar.visibility = View.GONE
         }
     }
 
