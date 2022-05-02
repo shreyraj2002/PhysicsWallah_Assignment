@@ -1,7 +1,5 @@
 # Physics-Wallah-Assignment
 
-## Warning!
-Do not copy this code in your PhysicsWallah Assignment, you will be directly rejected.
 
 ##
 ## Screenshots
